@@ -2,7 +2,7 @@
 <project version="4">
   <component name="DBNavigator.Project.DataEditorManager">
     <record-view-column-sorting-type value="BY_INDEX" />
-    <value-preview-text-wrapping value="true" />
+    <value-preview-text-wrapping value="false" />
     <value-preview-pinned value="false" />
   </component>
   <component name="DBNavigator.Project.DatabaseBrowserManager">
@@ -13,7 +13,10 @@
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="4e2d8614-9baa-4071-9d23-438390b8530e">
-      <console name="goit_java8_hw4" type="STANDARD" schema="goit_java8_hw4" session="Main" />
+      <console name="goit_java8_hw4" type="STANDARD" schema="goit_java8_hw4" session="Main"><![CDATA[select * from public.client;
+select * from public.worker;
+select * from public.project;
+select * from public.project_worker;]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">
@@ -21,6 +24,12 @@
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
     <open-files />
+  </component>
+  <component name="DBNavigator.Project.ExecutionManager">
+    <retain-sticky-names value="false" />
+  </component>
+  <component name="DBNavigator.Project.FileConnectionMappingManager">
+    <mapping file-url="file://$PROJECT_DIR$/sql/init_db.sql" connection-id="4e2d8614-9baa-4071-9d23-438390b8530e" session-id="MAIN" current-schema="goit_java8_hw4" />
   </component>
   <component name="DBNavigator.Project.ObjectQuickFilterManager">
     <last-used-operator value="EQUAL" />
@@ -34,7 +43,7 @@
           <description value="" />
           <database-type value="POSTGRES" />
           <config-type value="BASIC" />
-          <database-version value="9999.0" />
+          <database-version value="15.1" />
           <driver-source value="BUILTIN" />
           <driver-library value="" />
           <driver value="" />
