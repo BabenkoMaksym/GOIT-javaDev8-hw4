@@ -2,7 +2,7 @@ plugins {
     id 'java'
 }
 
-group 'ua.goit.javaDev8'
+group 'org.example'
 version '1.0-SNAPSHOT'
 
 repositories {
