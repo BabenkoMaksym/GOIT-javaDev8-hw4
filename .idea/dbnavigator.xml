@@ -13,10 +13,20 @@
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="4e2d8614-9baa-4071-9d23-438390b8530e">
-      <console name="goit_java8_hw4" type="STANDARD" schema="goit_java8_hw4" session="Main"><![CDATA[select * from public.client;
-select * from public.worker;
-select * from public.project;
-select * from public.project_worker;]]></console>
+      <console name="goit_java8_hw4" type="STANDARD" schema="goit_java8_hw4" session="Main"><![CDATA[with proj_time AS (select  id, (date_part('year', justify_days(((select finish_date )::timestamp without time zone) -
+        ((select start_date)::timestamp without time zone))) * 12 +
+        date_part('month', justify_days(((select finish_date)::timestamp without time zone) -
+        ((select start_date)::timestamp without time zone)))) AS month_count
+        from public.project where id in (select public.project.id
+                                        from public.project)
+        ),
+        table_1 AS (
+select project_id, worker_id, salary, month_count from public.project_worker
+join public.worker on worker_id = "public".worker."id"
+join proj_time on project_id = proj_time.id)
+select project_id, sum(salary * month_count) AS proj_cost from table_1
+group by project_id
+order by project_id;]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">

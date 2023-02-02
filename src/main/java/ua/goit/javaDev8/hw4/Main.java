@@ -1,17 +1,25 @@
 package ua.goit.javaDev8.hw4;
 
-import java.sql.Connection;
+import ua.goit.javaDev8.hw4.dao.*;
+import ua.goit.javaDev8.hw4.dbServices.DatabaseQueryService;
+
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        Connection connection = Database.getConnection();
-        System.out.println(connection);
-        Connection connection2 = Database.getConnection();
-        System.out.println(connection2);
-        Connection connection3 = Database.getConnection();
-        System.out.println(connection3);
-        Connection connection4 = Database.getConnection();
-        System.out.println(connection4);
+        List<LongestProject> longestProjects = new DatabaseQueryService().findLongestProject();
+        longestProjects.forEach(System.out::println);
 
+        List<MaxProjectsClient> maxProjectsClients = new DatabaseQueryService().findMaxProjectsClient();
+        maxProjectsClients.forEach(System.out::println);
+
+        List<Worker> maxSalaryWorkers = new DatabaseQueryService().findMaxSalaryWorker();
+        maxSalaryWorkers.forEach(System.out::println);
+
+        List<YoungestEldestWorker> youngestEldestWorkerList = new DatabaseQueryService().findYoungestEldestWorkers();
+        youngestEldestWorkerList.forEach(System.out::println);
+
+        List<ProjectPrice> projectPriceList = new DatabaseQueryService().findProjectPrices();
+        projectPriceList.forEach(System.out::println);
     }
 }

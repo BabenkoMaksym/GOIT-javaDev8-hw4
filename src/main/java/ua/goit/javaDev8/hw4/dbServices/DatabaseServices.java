@@ -2,13 +2,12 @@ package ua.goit.javaDev8.hw4.dbServices;
 
 import ua.goit.javaDev8.hw4.Database;
 
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.stream.Collectors;
 
 public class DatabaseServices {
 
@@ -53,14 +52,6 @@ public class DatabaseServices {
             throw new RuntimeException(e);
         } catch (SQLException e) {
             e.printStackTrace();
-        } finally {
-            try {
-                if (st != null) {
-                    st.close();
-                }
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            }
         }
     }
 
@@ -82,15 +73,22 @@ public class DatabaseServices {
             throw new RuntimeException(e);
         } catch (SQLException e) {
             e.printStackTrace();
-        } finally {
-            if (st != null) {
-                try {
-                    st.close();
-                } catch (SQLException e) {
-                    throw new RuntimeException(e);
-                }
-            }
         }
+    }
+
+    public ResultSet queryDB(String sqlStrPath) {
+        ResultSet resultSet = null;
+        try {
+            st = conn.createStatement();
+            BufferedReader reader = new BufferedReader(new FileReader(new File(sqlStrPath)));
+            String sqlStr = reader.lines().collect(Collectors.joining(System.lineSeparator()));
+            resultSet = st.executeQuery(sqlStr);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return resultSet;
     }
 
 
