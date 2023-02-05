@@ -7,6 +7,7 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
+        long startTime = System.currentTimeMillis();
         List<LongestProject> longestProjects = new DatabaseQueryService().findLongestProject();
         longestProjects.forEach(System.out::println);
 
@@ -21,5 +22,8 @@ public class Main {
 
         List<ProjectPrice> projectPriceList = new DatabaseQueryService().findProjectPrices();
         projectPriceList.forEach(System.out::println);
+
+        long resultTime = System.currentTimeMillis() - startTime;
+        System.out.println(resultTime);
     }
 }

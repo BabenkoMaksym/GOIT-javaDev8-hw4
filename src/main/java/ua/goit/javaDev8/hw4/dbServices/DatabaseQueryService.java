@@ -1,5 +1,6 @@
 package ua.goit.javaDev8.hw4.dbServices;
 
+import ua.goit.javaDev8.hw4.Database;
 import ua.goit.javaDev8.hw4.dao.*;
 
 import java.sql.ResultSet;
@@ -30,6 +31,7 @@ public class DatabaseQueryService {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        Database.closeConnection();
         return longestProjects;
     }
 
@@ -47,6 +49,7 @@ public class DatabaseQueryService {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        Database.closeConnection();
         return maxProjectsClients;
     }
 
@@ -68,6 +71,7 @@ public class DatabaseQueryService {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        Database.closeConnection();
         return workers;
     }
 
@@ -87,6 +91,7 @@ public class DatabaseQueryService {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        Database.closeConnection();
         return youngestEldestWorkerList;
     }
 
@@ -104,6 +109,7 @@ public class DatabaseQueryService {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        Database.closeConnection();
         return projectPriceList;
     }
 
@@ -113,5 +119,4 @@ public class DatabaseQueryService {
         }
         return dbServices;
     }
-
 }
