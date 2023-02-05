@@ -23,6 +23,8 @@ public class Main {
         List<ProjectPrice> projectPriceList = new DatabaseQueryService().findProjectPrices();
         projectPriceList.forEach(System.out::println);
 
+        Database.closeConnection();
+
         long resultTime = System.currentTimeMillis() - startTime;
         System.out.println(resultTime);
     }
